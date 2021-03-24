@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using InstagrammeWithEF.Data.Entities;
 
 #nullable disable
 
-namespace InstagrammeWithEF.Data
+namespace InstagrammeWithEF.Data.Entities
 {
     public partial class PostTag
     {

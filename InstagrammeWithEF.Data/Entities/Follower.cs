@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 
 #nullable disable
 
-namespace InstagrammeWithEF.Data
+namespace InstagrammeWithEF.Data.Entities
 {
     public partial class Follower
     {

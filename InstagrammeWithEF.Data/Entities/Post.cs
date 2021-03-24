@@ -9,9 +9,9 @@ namespace InstagrammeWithEF.Data.Entities
     {
         public Post()
         {
-            Comments = new HashSet<Comment>();
-            Likes = new HashSet<Like>();
-            PostTags = new HashSet<PostTag>();
+            Comments = new List<Comment>();
+            Likes = new List<Like>();
+            PostTags = new List<PostTag>();
         }
 
         public int PostId { get; set; }
@@ -21,8 +21,8 @@ namespace InstagrammeWithEF.Data.Entities
         public DateTime CreatedAt { get; set; }
 
         public virtual User User { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<Like> Likes { get; set; }
-        public virtual ICollection<PostTag> PostTags { get; set; }
+        public List<Comment> Comments { get; set; }
+        public List<Like> Likes { get; set; }
+        public List<PostTag> PostTags { get; set; }
     }
 }

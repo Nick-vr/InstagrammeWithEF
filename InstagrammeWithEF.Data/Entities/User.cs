@@ -1,30 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using InstagrammeWithEF.Data.Entities;
 
 #nullable disable
 
-namespace InstagrammeWithEF.Data
+namespace InstagrammeWithEF.Data.Entities
 {
     public partial class User
     {
         public User()
         {
-            Comments = new HashSet<Comment>();
-            FollowerFollowees = new HashSet<Follower>();
-            FollowerFollowerNavigations = new HashSet<Follower>();
-            Likes = new HashSet<Like>();
-            Posts = new HashSet<Post>();
+            Comments = new List<Comment>();
+            FollowerFollowees = new List<Follower>();
+            FollowerFollowerNavigations = new List<Follower>();
+            Likes = new List<Like>();
+            Posts = new List<Post>();
         }
 
         public int UserId { get; set; }
         public string UserName { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<Follower> FollowerFollowees { get; set; }
-        public virtual ICollection<Follower> FollowerFollowerNavigations { get; set; }
-        public virtual ICollection<Like> Likes { get; set; }
-        public virtual ICollection<Post> Posts { get; set; }
+        public List<Comment> Comments { get; set; }
+        public List<Follower> FollowerFollowees { get; set; }
+        public List<Follower> FollowerFollowerNavigations { get; set; }
+        public List<Like> Likes { get; set; }
+        public List<Post> Posts { get; set; }
     }
 }
