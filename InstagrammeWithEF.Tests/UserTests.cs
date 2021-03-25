@@ -111,10 +111,12 @@ namespace InstagrammeWithEF.Tests
         public void GetMostPopularPhotoAndUserWhoPostedPhoto()
         {
             /*
-             *
-             * SELECT TOP 1 Posts.PostId
-             * FROM Posts
-             * JOIN Users ON Posts.UserId = Users.UserId
+             *  SELECT TOP 1 Likes.PostID, USERS.UserId, USERS.UserName, COUNT(Likes.PostID) AS 'aantal likes'
+             *  FROM Likes
+             *  LEFT JOIN Posts ON Likes.PostID = Posts.PostID
+             *  LEFT JOIN Users ON Posts.UserId = Users.UserId
+             *  GROUP BY Likes.PostID, Users.UserId, Users.UserName
+             *  ORDER BY COUNT(Likes.PostID) DESC
              */
 
             // Arrange
@@ -128,6 +130,13 @@ namespace InstagrammeWithEF.Tests
         [Test]
         public void GetDateWithMostRegistrations()
         {
+            /*
+             *  SELECT TOP 1 Users.CreatedAt, COUNT(Users.CreatedAt) AS 'Most Regs'
+             *  FROM Users
+             *  GROUP BY Users.CreatedAt
+             *  ORDER BY COUNT(Users.CreatedAt) DESC
+             */
+
             // Arrange
 
             // Act
@@ -139,6 +148,8 @@ namespace InstagrammeWithEF.Tests
         [Test]
         public void GetAverageNumberOfPhotosByUser()
         {
+            /* SELECT ROUND( ((SELECT Count(*) FROM   Posts) +0.0) / (SELECT Count(*) FROM   users) , 2) AS avg; */
+
             // Arrange
 
             // Act
@@ -151,6 +162,15 @@ namespace InstagrammeWithEF.Tests
         [Test]
         public void GetFiveMostPopularHashtags()
         {
+            /*
+             *  SELECT TOP 5 Tags.TagName, Tags.TagId, COUNT(*) AS r
+             *  FROM Tags
+             *  LEFT JOIN PostTags
+             *  ON Tags.TagId = PostTags.TagId
+             *  GROUP BY Tags.TagName, Tags.TagId
+             *  ORDER BY r DESC
+             */
+
             // Arrange
 
             // Act
